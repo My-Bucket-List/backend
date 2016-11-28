@@ -24,3 +24,6 @@ lib-cov
 
 # Mac Only
 .DS_Store
+
+# Ignore the database
+database/development.sqlite
