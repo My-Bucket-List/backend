@@ -10,6 +10,9 @@ class UserController {
 		data.password = yield Hash.make(data.password)
 		let user = yield User.create(data)
 
+		let token = yield request.auth.generate(user)
+	    user.access_token = token
+
 		response.status(201).json(user)
 	}
 
