@@ -10,8 +10,9 @@ POST [herokuapp.com/register]
 * username: string
 * password: string
 * auth_token: string (not yet functional)
+* id: integer
 
-Returns 201 'Created on Success' ... or something else on failure
+Returns 201 'Created on Success'.
 
 #### Request:
 
