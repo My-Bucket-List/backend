@@ -9,7 +9,7 @@ POST [herokuapp.com/register]
 * email: string
 * username: string
 * password: string
-* auth_token: string (coming soon!)
+* auth_token: string
 * id: integer
 
 Returns 201 'Created on Success'. (Failure message coming soon!)
