@@ -1,6 +1,6 @@
 ### POST /register
 
-This route is used to register a new user. 
+_This route is used to register a new user._
 
 POST [herokuapp.com/register]
 
@@ -9,7 +9,7 @@ POST [herokuapp.com/register]
 * email: string
 * username: string
 * password: string
-* auth_token: string (coming soon!)
+* auth_token: string
 * id: integer
 
 Returns 201 'Created on Success'. (Failure message coming soon!)
@@ -36,7 +36,7 @@ Returns 201 'Created on Success'. (Failure message coming soon!)
 
 ### POST /login
 
-This route is used to login an existing user. 
+_This route is used to login an existing user._ 
 
 POST [herokuapp.com/login]
 
