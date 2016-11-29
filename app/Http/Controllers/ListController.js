@@ -10,6 +10,8 @@ class ListController {
 	}
 
 	* indexByUser(request, response){
+		let user = request.authUser
+
 		let userId = request.param('user_id')
 		
 		let list = yield List.query().where('user_id', userId)
@@ -18,6 +20,8 @@ class ListController {
 	}
 
 	* indexSingle(request, response){
+		let user = request.authUser
+
 		let userId = request.param('user_id')
 		let listId = request.param('id')
 
@@ -29,6 +33,8 @@ class ListController {
 	}
 
 	* create(request, response){
+		let user = request.authUser
+		
 		let userId = request.param('user_id')
 		let data = request.only('title', 'url', 'description')
 		data.user_id = userId
@@ -36,6 +42,15 @@ class ListController {
 		let list = yield List.create(data)
 
 		response.status(201).json(list)
+	}
+
+	* delete(request, response){
+		let itemId = request.param('id')
+		let item = yield List.query()
+			.where('id', itemId)
+			.delete()
+
+		response.status(201).json({ success: 'Item deleted'})
 	}
 }
 

@@ -10,6 +10,8 @@ class ImageController {
 	}
 
 	* indexSingle(request, response){
+		let user = request.authUser
+
 		let listId = request.param('list_id')
 		let imageId = request.param('id')
 
@@ -22,6 +24,8 @@ class ImageController {
 	}
 
 	* create(request, response){
+		let user = request.authUser
+		
 		let listId = request.param('list_id')
 		let data = request.only('caption', 'url')
 		data.list_id = listId
@@ -30,6 +34,15 @@ class ImageController {
 		let image = yield Image.create(data)
 
 		response.status(201).json(image)
+	}
+
+	* delete(request, response){
+		let imageId = request.param('id')
+		let image = yield Image.query()
+			.where('id', imageId)
+			.delete()
+
+		response.status(201).json({ success: 'Image deleted'})
 	}
 
 }

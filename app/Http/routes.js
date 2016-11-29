@@ -21,16 +21,22 @@ Route.on('/').render('welcome')
 
 Route.post('/register', 	 				'UserController.register')
 Route.post('/login', 		 				'UserController.login')
+// LOGOUT
 
 Route.get('/lists', 		 				'ListController.indexAll')
 Route.get('/user/:user_id/list', 			'ListController.indexByUser').middleware('auth')
 Route.get('/user/:user_id/list/:id', 		'ListController.indexSingle').middleware('auth')
+Route.delete('user/:user_id/list/:id', 		'ListController.delete').middleware('auth')
+// EDIT LIST ITEM 
 Route.post('/user/:user_id/list', 			'ListController.create').middleware('auth')
 
 Route.get('/list/:list_id/images', 			'ImageController.indexAll').middleware('auth')
 Route.get('/list/:list_id/images/:id',		'ImageController.indexSingle').middleware('auth')
+Route.delete('/list/:list_id/images/:id', 	'ImageController.delete').middleware('auth')
+// UPDATE LIKE COUNT
 Route.post('/list/:list_id/images', 		'ImageController.create').middleware('auth')
 
 Route.get('/image/:image_id/comments', 		'CommentController.indexAll').middleware('auth')
 Route.post('/image/:image_id/comments', 	'CommentController.create').middleware('auth')
-Route.get('/image/:image_id/comments/:id', 	'CommentController.indexSingle').middleware('auth')
+Route.get('/image/:image_id/comment/:id', 	'CommentController.indexSingle').middleware('auth')
+Route.delete('/image/:image_id/comment/:id', 	'CommentController.delete').middleware('auth')

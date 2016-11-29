@@ -41,6 +41,15 @@ class CommentController {
 
 		response.status(201).json(newComment)
 	}
+
+	* delete(request, response){
+		let commentId = request.param('id')
+		let comment = yield Comment.query()
+			.where('id', commentId)
+			.delete()
+
+		response.status(201).json({ success: 'Comment deleted'})
+	}
 }
 
 module.exports = CommentController
