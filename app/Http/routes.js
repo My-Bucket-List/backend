@@ -19,14 +19,18 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.post('/register', 	 	'UserController.register')
-Route.post('/login', 		 	'UserController.login')
+Route.post('/register', 	 				'UserController.register')
+Route.post('/login', 		 				'UserController.login')
 
 Route.get('/lists', 		 				'ListController.indexAll')
-Route.get('/lists/:user_id', 				'ListController.indexByUser')
-Route.get('/lists/:user_id/list/:id', 		'ListController.indexByListItem')
-Route.post('/lists/:user_id', 				'ListController.create')
+Route.get('/user/:user_id/list', 			'ListController.indexByUser').middleware('auth')
+Route.get('/user/:user_id/list/:id', 		'ListController.indexSingle').middleware('auth')
+Route.post('/user/:user_id/list', 			'ListController.create').middleware('auth')
 
-Route.get('/images/:list_id', 				'ImageController.indexAll')
-Route.get('/images/:list_id/image/:id',		'ImageController.indexSingle')
-Route.post('/images/:list_id', 				'ImageController.create')
+Route.get('/list/:list_id/images', 			'ImageController.indexAll').middleware('auth')
+Route.get('/list/:list_id/images/:id',		'ImageController.indexSingle').middleware('auth')
+Route.post('/list/:list_id/images', 		'ImageController.create').middleware('auth')
+
+Route.get('/image/:image_id/comments', 		'CommentController.indexAll').middleware('auth')
+Route.post('/image/:image_id/comments', 	'CommentController.create').middleware('auth')
+Route.get('/image/:image_id/comments/:id', 	'CommentController.indexSingle').middleware('auth')

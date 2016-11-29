@@ -17,7 +17,7 @@ class ListController {
 		response.status(201).json(list)
 	}
 
-	* indexByListItem(request, response){
+	* indexSingle(request, response){
 		let userId = request.param('user_id')
 		let listId = request.param('id')
 
