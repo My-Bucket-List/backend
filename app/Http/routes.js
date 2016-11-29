@@ -26,3 +26,7 @@ Route.get('/lists', 		 				'ListController.indexAll')
 Route.get('/lists/:user_id', 				'ListController.indexByUser')
 Route.get('/lists/:user_id/list/:id', 		'ListController.indexByListItem')
 Route.post('/lists/:user_id', 				'ListController.create')
+
+Route.get('/images/:list_id', 				'ImageController.indexAll')
+Route.get('/images/:list_id/image/:id',		'ImageController.indexSingle')
+Route.post('/images/:list_id', 				'ImageController.create')
