@@ -4,14 +4,28 @@ const List = use('App/Model/List')
 
 class ListController {
 
-	* index(request, response){
+	* indexAll(request, response){
+		let list = yield List.all()
+		response.status(201).json(list)
+	}
+
+	* indexByUser(request, response){
 		let userId = request.param('user_id')
 		
-		// find list by user id 
 		let list = yield List.query().where('user_id', userId)
 		
-		//send back response
 		response.status(201).json(list)
+	}
+
+	* indexByListItem(request, response){
+		let userId = request.param('user_id')
+		let listId = request.param('id')
+
+		let listItem = yield List.query()
+			.where('user_id', userId)
+			.where('id', listId)
+
+		response.status(201).json(listItem)
 	}
 
 	* create(request, response){
