@@ -11,7 +11,6 @@ class ImageController {
 
 	* indexSingle(request, response){
 		let user = request.authUser
-
 		let listId = request.param('list_id')
 		let imageId = request.param('id')
 
@@ -25,7 +24,6 @@ class ImageController {
 
 	* create(request, response){
 		let user = request.authUser
-		
 		let listId = request.param('list_id')
 		let data = request.only('caption', 'url')
 		data.list_id = listId
@@ -43,6 +41,15 @@ class ImageController {
 			.delete()
 
 		response.status(201).json({ success: 'Image deleted'})
+	}
+
+	* updateLikeCount (request, response){
+		let imageId = request.param('id') 
+		let image = yield Image.findBy('id', imageId) // find current image
+		image.like_count += 1 
+		yield image.save()
+
+		response.status(201).json(image)
 	}
 
 }

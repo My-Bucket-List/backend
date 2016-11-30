@@ -33,8 +33,8 @@ Route.patch('user/:user_id/list/:id', 		'ListController.update').middleware('aut
 Route.get('/list/:list_id/images', 			'ImageController.indexAll').middleware('auth')
 Route.get('/list/:list_id/images/:id',		'ImageController.indexSingle').middleware('auth')
 Route.delete('/list/:list_id/images/:id', 	'ImageController.delete').middleware('auth')
-// UPDATE LIKE COUNT
 Route.post('/list/:list_id/images', 		'ImageController.create').middleware('auth')
+Route.patch('/list/:list_id/images/:id', 		'ImageController.updateLikeCount').middleware('auth')
 
 Route.get('/image/:image_id/comments', 		'CommentController.indexAll').middleware('auth')
 Route.post('/image/:image_id/comments', 	'CommentController.create').middleware('auth')
