@@ -52,6 +52,30 @@ class ListController {
 
 		response.status(201).json({ success: 'Item deleted'})
 	}
+
+	* update(request, response){
+		let data = request.only('title', 'url', 'description') // get new data
+		let itemId = request.param('id') // get id of current list item
+		let item = yield List.findBy('id', itemId) // get current list item
+		
+		if (item.title !== data.title) { 
+			item.title = data.title
+			yield item.save()
+		} 
+		
+		if (item.url !== data.url){
+			item.url = data.url
+			yield item.save()
+		} 
+		
+		if (item.description !== data.description){
+			item.description = data.description
+			yield item.save()
+		} 
+
+		response.status(201).json(item)
+
+	}
 }
 
 module.exports = ListController

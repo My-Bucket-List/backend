@@ -50,6 +50,19 @@ class CommentController {
 
 		response.status(201).json({ success: 'Comment deleted'})
 	}
+
+	* update(request, response){
+		let data = request.only('comment') // get new data
+		let commentId = request.param('id') // get id of current comment
+		let comment = yield Comment.findBy('id', commentId) // get current comment
+
+		if (comment.comment !== data.comment) { 
+			comment.comment = data.comment
+			yield comment.save()
+		}  
+
+		response.status(201).json(comment)
+	}
 }
 
 module.exports = CommentController
