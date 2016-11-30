@@ -23,7 +23,6 @@ Route.post('/register', 	 				'UserController.register')
 Route.post('/login', 		 				'UserController.login')
 
 Route.get('/lists', 		 				'ListController.indexAll')
-
 Route.get('/user/:user_id/list', 			'ListController.indexByUser').middleware('auth')
 Route.post('/user/:user_id/list', 			'ListController.create').middleware('auth')
 Route.get('/user/:user_id/list/:id', 		'ListController.indexSingle').middleware('auth')
@@ -34,7 +33,7 @@ Route.get('/list/:list_id/images', 			'ImageController.indexAll').middleware('au
 Route.get('/list/:list_id/images/:id',		'ImageController.indexSingle').middleware('auth')
 Route.delete('/list/:list_id/images/:id', 	'ImageController.delete').middleware('auth')
 Route.post('/list/:list_id/images', 		'ImageController.create').middleware('auth')
-Route.patch('/list/:list_id/images/:id', 		'ImageController.updateLikeCount').middleware('auth')
+Route.patch('/list/:list_id/images/:id', 	'ImageController.updateLikeCount').middleware('auth')
 
 Route.get('/image/:image_id/comments', 		'CommentController.indexAll').middleware('auth')
 Route.post('/image/:image_id/comments', 	'CommentController.create').middleware('auth')

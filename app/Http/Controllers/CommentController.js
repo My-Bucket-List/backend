@@ -7,14 +7,12 @@ class CommentController {
 
 	* indexAll(request, response){
 		let user = request.authUser
-
 		let comments = yield Comment.all()
 		response.status(201).json(comments)
 	}
 
 	* indexSingle(request, response){
 		let user = request.authUser
-
 		let imageId = request.param('image_id')
 		let commentId = request.param('id')
 
@@ -27,7 +25,6 @@ class CommentController {
 
 	* create(request, response){
 		let user = request.authUser
-
 		let imageId = request.param('image_id')	
 		let image = yield Image.find(imageId)
 		let loggedInUser = user.id
@@ -43,6 +40,7 @@ class CommentController {
 	}
 
 	* delete(request, response){
+		let user = request.authUser
 		let commentId = request.param('id')
 		let comment = yield Comment.query()
 			.where('id', commentId)
@@ -52,6 +50,7 @@ class CommentController {
 	}
 
 	* update(request, response){
+		let user = request.authUser
 		let data = request.only('comment') // get new data
 		let commentId = request.param('id') // get id of current comment
 		let comment = yield Comment.findBy('id', commentId) // get current comment

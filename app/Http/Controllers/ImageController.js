@@ -35,6 +35,7 @@ class ImageController {
 	}
 
 	* delete(request, response){
+		let user = request.authUser
 		let imageId = request.param('id')
 		let image = yield Image.query()
 			.where('id', imageId)
@@ -44,6 +45,7 @@ class ImageController {
 	}
 
 	* updateLikeCount (request, response){
+		let user = request.authUser
 		let imageId = request.param('id') 
 		let image = yield Image.findBy('id', imageId) // find current image
 		image.like_count += 1 

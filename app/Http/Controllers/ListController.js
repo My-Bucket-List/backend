@@ -11,9 +11,7 @@ class ListController {
 
 	* indexByUser(request, response){
 		let user = request.authUser
-
 		let userId = request.param('user_id')
-		
 		let list = yield List.query().where('user_id', userId)
 		
 		response.status(201).json(list)
@@ -21,7 +19,6 @@ class ListController {
 
 	* indexSingle(request, response){
 		let user = request.authUser
-
 		let userId = request.param('user_id')
 		let listId = request.param('id')
 
@@ -33,8 +30,7 @@ class ListController {
 	}
 
 	* create(request, response){
-		let user = request.authUser
-		
+		let user = request.authUser		
 		let userId = request.param('user_id')
 		let data = request.only('title', 'url', 'description')
 		data.user_id = userId
@@ -45,6 +41,7 @@ class ListController {
 	}
 
 	* delete(request, response){
+		let user = request.authUser
 		let itemId = request.param('id')
 		let item = yield List.query()
 			.where('id', itemId)
@@ -54,6 +51,7 @@ class ListController {
 	}
 
 	* update(request, response){
+		let user = request.authUser
 		let data = request.only('title', 'url', 'description') // get new data
 		let itemId = request.param('id') // get id of current list item
 		let item = yield List.findBy('id', itemId) // get current list item
