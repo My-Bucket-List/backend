@@ -24,7 +24,7 @@ Route.post('/login', 		 				'UserController.login')
 
 Route.get('/lists', 		 				'ListController.indexAll')
 Route.get('/user/:user_id/list', 			'ListController.indexByUser').middleware('auth')
-Route.post('/user/:user_id/list', 			'ListController.create').middleware('auth')
+Route.post('/goals',			 			'ListController.create').middleware('auth')
 Route.get('/user/:user_id/list/:id', 		'ListController.indexSingle').middleware('auth')
 Route.delete('user/:user_id/list/:id', 		'ListController.delete').middleware('auth')
 Route.patch('user/:user_id/list/:id', 		'ListController.update').middleware('auth')
