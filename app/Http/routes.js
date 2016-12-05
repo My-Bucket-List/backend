@@ -22,7 +22,7 @@ Route.on('/').render('welcome')
 Route.post('/register', 	 				'UserController.register')
 Route.post('/login', 		 				'UserController.login')
 
-Route.get('/lists', 		 				'ListController.indexAll')
+Route.get('/goals', 		 				'ListController.indexAll')
 Route.get('/user/:user_id/list', 			'ListController.indexByUser').middleware('auth')
 Route.post('/goals',			 			'ListController.create').middleware('auth')
 Route.get('/user/:user_id/list/:id', 		'ListController.indexSingle').middleware('auth')
