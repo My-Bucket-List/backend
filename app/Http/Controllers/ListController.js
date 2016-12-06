@@ -19,11 +19,11 @@ class ListController {
 
 	* indexSingle(request, response){
 		let user = request.authUser
-		let userId = request.param('user_id')
+		// let userId = request.param('user_id')
 		let listId = request.param('id')
 
 		let listItem = yield List.query()
-			.where('user_id', userId)
+			// .where('user_id', userId)
 			.where('id', listId)
 
 		response.status(201).json(listItem)
