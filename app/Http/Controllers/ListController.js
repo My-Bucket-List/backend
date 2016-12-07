@@ -30,12 +30,16 @@ class ListController {
 	}
 
 	* create(request, response){
-		let user = request.authUser		
-		let userId = request.param('user_id')
+		console.log('BE req: ', request.all())
+		let user = request.authUser
+
+		console.log('BE user: ', user)
 		let data = request.only('title', 'url', 'description')
-		data.user_id = userId
+		data.user_id = user.id
+		console.log('BE data w/ user id: ', data)
 
 		let list = yield List.create(data)
+		console.log('BE response: ', list)
 
 		response.status(201).json(list)
 	}
