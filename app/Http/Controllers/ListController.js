@@ -35,6 +35,7 @@ class ListController {
 
 		console.log('BE user: ', user)
 		let data = request.only('title', 'url', 'description')
+		
 		data.user_id = user.id
 		console.log('BE data w/ user id: ', data)
 
