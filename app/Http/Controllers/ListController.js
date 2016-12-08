@@ -94,7 +94,7 @@ class ListController {
 			item.completed = true
 			yield item.save()
 		} else {
-			item.completed == false
+			item.completed = false
 			yield item.save()
 		}
 
