@@ -88,6 +88,7 @@ class ListController {
 
 		let itemId = request.param('id')
 		let item = yield List.findBy('id', itemId)
+		console.log('item: ', item)
 
 		if (item.completed == false) {
 			item.completed == true
