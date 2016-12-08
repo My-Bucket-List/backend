@@ -79,6 +79,23 @@ class ListController {
 		response.status(201).json(item)
 
 	}
+
+	* completed(request, response){
+		let user = request.authUser
+		let data = request.only('completed')
+		let itemId = request.param('id')
+		let item = yield List.findBy('id', itemId)
+
+		if (item.completed == false) {
+			item.completed == true
+			yield item.save()
+		} else {
+			item.completed == false
+			yield item.save()
+		}
+		
+		response.status(201).json(item)
+	}
 }
 
 module.exports = ListController
