@@ -82,7 +82,10 @@ class ListController {
 
 	* completed(request, response){
 		let user = request.authUser
+
 		let data = request.only('completed')
+		console.log('data: ', data)
+
 		let itemId = request.param('id')
 		let item = yield List.findBy('id', itemId)
 
@@ -93,7 +96,7 @@ class ListController {
 			item.completed == false
 			yield item.save()
 		}
-		
+
 		response.status(201).json(item)
 	}
 }

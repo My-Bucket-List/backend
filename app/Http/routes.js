@@ -28,7 +28,7 @@ Route.post('/goals',			 			'ListController.create').middleware('auth')
 Route.get('/goals/:id', 					'ListController.indexSingle').middleware('auth')
 Route.delete('goals/:id',			 		'ListController.delete').middleware('auth')
 Route.patch('/goals/:id', 					'ListController.update').middleware('auth')
-Route.patch('/goals/:id/completed', 		'ListController.completed').middleware('auth')
+Route.patch('/completed/:id', 				'ListController.completed').middleware('auth')
 
 Route.get('/list/:list_id/images', 			'ImageController.indexAll').middleware('auth')
 Route.get('/list/:list_id/images/:id',		'ImageController.indexSingle').middleware('auth')
