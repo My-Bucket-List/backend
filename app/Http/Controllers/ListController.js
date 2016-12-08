@@ -91,7 +91,7 @@ class ListController {
 		console.log('item: ', item)
 
 		if (item.completed == false) {
-			item.completed == true
+			item.completed = true
 			yield item.save()
 		} else {
 			item.completed == false
